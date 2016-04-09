@@ -17,3 +17,4 @@ yum -y install tmux vim-enhanced
 # Make workspace directory
 mkdir -p /home/vagrant/workspace
 chown -R vagrant:vagrant /home/vagrant/workspace
+

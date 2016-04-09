@@ -1,0 +1,51 @@
+[user]
+	name = Jonathan Pham
+	email = jonpham247@gmail.com
+[color]
+	ui = true
+[push]
+	default = simple
+[core]
+	editor = vim
+	eol = lf
+	autocrlf = input
+	filemode = false
+[alias]
+        dl = "!git ll -1"
+        dlc = diff --cached HEAD^
+        dr  = "!f() { git diff "$1"^.."$1"; }; f"
+        lc  = "!f() { git ll "$1"^.."$1"; }; f"
+        diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+        f = "!git ls-files | grep -i"
+        filelog = log -u
+        fl = log -u
+        lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+        ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+        le = log --oneline --decorate
+        lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' 
+        lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+        lg3 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' 
+        lg4 = log --graph --abbrev-commit --decorate --format=format:'%h - (%ar) %d%n''%s- %an' 
+        lg = !"git lg2"
+        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+        lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+        ours = "!f() { git co --ours $@ && git add $@; }; f"
+        theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+        upd = remote -v update
+        co = checkout
+        ci = commit -m
+        stat = status
+        cleandir1 = clean -ndX
+        cleandir2 = clean -fdX
+        cleandir = !"git cleandir1"
+        filechanges = show --pretty="format:" --name-status
+[diff]
+	tool = kdiff3
+[http]
+[credential]
+	helper = cache --timeout 3600
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/shared/gitrepo/phamjk/ampv_forks/ampv-sw-sms/test/smsTestTest'
+let g:netrw_dirhist_2='/shared/gitrepo/phamjk/ampv_forks/ampv-sw-arch/test/siCommTests'
+let g:netrw_dirhist_3='/home/phamjk/.ldra'
+let g:netrw_dirhist_4='/home/phamjk/Utilities'
+let g:netrw_dirhist_5='/home/phamjk/bae-ps-tools/env_tools/etc/modulefiles/gcc'
+let g:netrw_dirhist_6='/shared/svnrepo/phamjk/ampv-sw-artifacts/deployment/ems-ng_container/docker_test/docker_emsng'

@@ -1,0 +1,12 @@
+set nu
+" //*# Single Tab Char appears 4 spaces wide*//
+"set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+"//*# 4 spaces for each indent*//
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+set background=dark
+set t_Co=256
+"color desert
+colorscheme wombat256mod
+"colorscheme base16-railscasts
+highlight Comment ctermfg=98

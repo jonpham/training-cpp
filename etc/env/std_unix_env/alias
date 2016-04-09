@@ -1,0 +1,22 @@
+# General / Generic Aliases
+alias ll='ls -xl --color=auto'
+alias l.='ls --color=auto -ald \.*'
+alias la='ls -lah --color=auto'
+alias ls='ls -F --color=auto'
+alias lt='ls -ltra --color=auto'
+alias cls=clear
+alias titlebar="echo '^[]2;\!*^G'"
+alias penv='echo $\!^ | tr : \\n'
+alias psg='ps x | grep -v grep | grep'
+
+# Shared Navigation
+
+# VNC Commands
+alias vncd='sudo nohup x11vnc -many -nopw -display :0.0 &'
+
+# Personal Git Shortcuts
+alias g='git'
+alias gud='git checkout develop && git remote -v update && git status' # GIT UPDATE DEVELOP
+alias update-git='git remote -v update && git status'
+
+
