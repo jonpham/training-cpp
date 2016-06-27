@@ -36,8 +36,8 @@
         co = checkout
         ci = commit -m
         stat = status
-        cleandir1 = clean -ndX
-        cleandir2 = clean -fdX
+        cleandir1 = clean -ndx -e ".*/"
+        cleandir2 = clean -fdx -e ".*/"
         cleandir = !"git cleandir1"
         filechanges = show --pretty="format:" --name-status
 [diff]

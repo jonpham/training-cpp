@@ -1,34 +1,15 @@
-# OS Files
-*.DS_Store
+#Files to ignore
+.DS_Store
+.idea/**
+gmock/
+**/.vagrant/**
 
-# Vagrant Directory
-**/.vagrant
-
-# Compiled Object files
-*.slo
-*.lo
+bin/**
+lib/**
+build/**
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
-*.lib
+*.so
+CMakeFiles/**
+CMakeCache.txt
 
-# Executables
-*.exe
-*.out
-*.app

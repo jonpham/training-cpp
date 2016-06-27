@@ -1,7 +1,8 @@
 #!/bin/bash
  
 # CP ENVIRONMENT
-arr=(~/sync/std_unix_env/*);
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+arr=(${SCRIPT_DIR}/std_unix_env/*);
 
 # i=0
 # while read line

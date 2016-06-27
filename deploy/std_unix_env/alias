@@ -11,6 +11,9 @@ alias psg='ps x | grep -v grep | grep'
 
 # Shared Navigation
 
+# Application Aliases
+alias cmake='cmake3'
+
 # VNC Commands
 alias vncd='sudo nohup x11vnc -many -nopw -display :0.0 &'
 

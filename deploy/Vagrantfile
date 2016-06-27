@@ -12,9 +12,9 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "centos/7"
+  config.vm.box = "bento/centos-7.2"
   #config.vm.box_url = "INSERT UNIQUE URL IF NECESSARY"
-  config.vm.define "phamjkCppBase" do |phamjkCppBase|
+  config.vm.define "base_cpp" do |base_cpp|
   end
 
   # Disable automatic box update checking. If you disable this, then
@@ -73,5 +73,5 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "/Users/jpmbp/Code/phamjk-cpp-base", "/home/vagrant/workspace", type: "virtualbox"
+  config.vm.synced_folder "../", "/home/vagrant/workspace", type: "virtualbox"
 end
