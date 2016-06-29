@@ -24,6 +24,7 @@ protected:
 class IMenuItem {
 public:
     virtual void showDescription()=0;
+    virtual void whatever()=0;
 };
 
 class Menu {
