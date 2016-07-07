@@ -7,18 +7,23 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <cstdlib>
 #include <vector>
 #include <memory>
 
+#include "CliMenu.h"
+
 class CommandLineInterface
 {
 public:
-//    ShellInterface(&Menu);
-    void displayTopMenu();
+  // CommandLineInterface(&Menu);
+  CommandLineInterface();
+  void displayTopMenu();
 protected:
-    std::string getUserInput();
-    void processMenuItem();
+  void displayCliIntroduction();
+  std::string getUserInput();
+  void processMenuItem();
 };
 
 

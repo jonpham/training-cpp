@@ -17,13 +17,14 @@ find_package(Threads REQUIRED)
 #]]
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-#set(LIBRARY_OUTPUT_DIRECTORY "lib")
-#set(RUNTIME_OUTPUT_DIRECTORY "bin")
+# Set Output Directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
+# Includes
 include_directories(include)
+include_directories(src)
 
 #[[ Add All Corresponding Source Directories and Targets based on Directory.
 #    All "subdirectories" should contain their own 'CMakeLists.txt' file.
@@ -33,9 +34,8 @@ include_directories(include)
 # add_subdirectory(src/sample_static_lib)
 
 ##### STATIC LIBRARY DEFINITION #####
-
-# set(STATIC_LIB_SRC_FILES src/sample_static_lib/static_classes.cpp)
-# add_library(sample_static_lib STATIC ${STATIC_LIB_SRC_FILES})
+file(GLOB CLI_LIB_SRC_FILES "src/cli_library/*.cpp")
+add_library(cli_library STATIC ${CLI_LIB_SRC_FILES})
 
 ##### SHARED LIBRARY DEFINITION #####
 
@@ -45,17 +45,15 @@ include_directories(include)
 ##### MAIN EXECUTABLE DEFINITION #####
 
 # Set Main Exectutable Sources files
-include_directories(include)
-include_directories(src)
-
 set(MAIN_SRC_FILES src/main.cpp)
-
-# file(GLOB MAIN_SRC_FILES "src/*.cpp")
 #[[ ALTERNATIVELY :
  # The file(GLOB...) allows for wildcard additions:
 #]]
+# file(GLOB MAIN_SRC_FILES "src/*.cpp")
+
+# Define & Link Target + Dependencies
 add_executable(cpp_training_app ${MAIN_SRC_FILES})
-# target_link_libraries(base_cpp_main sample_static_lib sample_shared_lib)
+target_link_libraries(cpp_training_app cli_library)
 
 ##### UNIT TEST DEFINITION #####
 # Google Mock/Test Dependency
