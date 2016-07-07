@@ -16,6 +16,20 @@ int Menu::registerMenuItem(std::shared_ptr<IMenuItem>& menu_item) {
 }
 
 void Menu::displayUsageText(){
-	std::cout << "\nDisplaying Menu Usage Text." << std::endl;
+	std::cout << "\nSelect an Option from the Following Menu Items: \n" << std::endl;
 	return;
+}
+
+void Menu::displayMenu(){
+	for ( uint i=0; i < m_menuList.size(); i++ ){
+    std::string item_name = m_menuList[i]->getItemName();
+    std::string item_menu_index;
+    if (item_name == "exit") {
+      item_menu_index = item_name; 
+    } else {
+      item_menu_index = i;
+    }
+
+    std::cout << "[" << item_menu_index << "] : " << item_name << std::endl;
+	}
 }

@@ -13,8 +13,12 @@
 
 class IMenuItem {
 public:
-    virtual void showDescription()=0;
-    virtual void whatever()=0;
+	virtual std::string getItemName(){return m_menuName;};
+  virtual std::string showDescription()=0;
+  virtual void executeModule()=0;
+protected:
+	std::string m_menuDescription{"NoDescription"};
+	std::string m_menuName{"NameNotSet"};
 };
 
 
