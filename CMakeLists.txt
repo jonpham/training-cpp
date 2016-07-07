@@ -34,26 +34,28 @@ include_directories(include)
 
 ##### STATIC LIBRARY DEFINITION #####
 
-set(STATIC_LIB_SRC_FILES src/sample_static_lib/static_classes.cpp)
-add_library(sample_static_lib STATIC ${STATIC_LIB_SRC_FILES})
+# set(STATIC_LIB_SRC_FILES src/sample_static_lib/static_classes.cpp)
+# add_library(sample_static_lib STATIC ${STATIC_LIB_SRC_FILES})
 
 ##### SHARED LIBRARY DEFINITION #####
 
-set(SHARED_LIB_SRC_FILES src/sample_shared_lib/shared_classes.cpp)
-add_library(sample_shared_lib SHARED ${SHARED_LIB_SRC_FILES} )
+# set(SHARED_LIB_SRC_FILES src/sample_shared_lib/shared_classes.cpp)
+# add_library(sample_shared_lib SHARED ${SHARED_LIB_SRC_FILES} )
 
 ##### MAIN EXECUTABLE DEFINITION #####
 
 # Set Main Exectutable Sources files
-#set(SOURCE_FILES ./main.cpp)
-include_directories(../include)
-file(GLOB MAIN_SRC_FILES "src/*.cpp")
+include_directories(include)
+include_directories(src)
+
+set(MAIN_SRC_FILES src/main.cpp)
+
+# file(GLOB MAIN_SRC_FILES "src/*.cpp")
 #[[ ALTERNATIVELY :
  # The file(GLOB...) allows for wildcard additions:
 #]]
-add_executable(base_cpp_main ${MAIN_SRC_FILES})
-target_link_libraries(base_cpp_main sample_static_lib sample_shared_lib)
-
+add_executable(cpp_training_app ${MAIN_SRC_FILES})
+# target_link_libraries(base_cpp_main sample_static_lib sample_shared_lib)
 
 ##### UNIT TEST DEFINITION #####
 # Google Mock/Test Dependency
@@ -104,12 +106,20 @@ if(BUILD_TESTS)
     include_directories("${source_dir}/gtest/include")
 
     macro(add_gtest test_source test_name)
-        add_executable(${test_name} ${test_source} test/unit/test_main.cpp)
+        add_executable(${test_name} ${test_source} test/unit/unit_test.cpp)
         target_link_libraries(${test_name} libgmock libgmock_main)
         add_test(${test_name} bin/${test_name})
     endmacro(add_gtest)
 
-    add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
+    # FUNCTIONAL TESTS
+
+    # file(GLOB FUNCTIONAL_TEST_SRC_FILES "test/functional/*.cpp")
+    # add_executable(FunctionTest_CLI ${FUNCTIONAL_TEST_SRC_FILES})
+    # target_link_libraries(FunctionTest_CLI libgmock libgmock_main)
+    # add_test(FunctionTest_CLI bin/FunctionTest_CLI)
+
+    # UNIT TESTS
+    # add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
 
 endif()
 

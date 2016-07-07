@@ -35,3 +35,7 @@ $ make
 # Purpose
 Create a Command Line tool that allows users to traverse through training modules using menu items and console input.
 Menu Items should consist of Walk Through Use Cases regarding Web-Based SW productivity Tools.
+
+# Menu Items 
+
+Menu Items are the real heart of this training repository. They can be created and used to demonstrate how Software Development can be done or to try new things in C++.
