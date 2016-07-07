@@ -5,9 +5,12 @@
 #include "TestCommandLineInterface.h"
 
 /* ####### TEST DEFINITION ####### */
-TEST_F(TestCommandLineInterface,TestExample)
+TEST_F(TestCommandLineInterface,IntroductoryText)
 {
- ASSERT_TRUE(false);
+  testing::internal::CaptureStdout();
+  
+  std::string output = testing::internal::GetCapturedStdout();
+  ASSERT_TRUE(false);
 }
 
 
