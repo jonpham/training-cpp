@@ -26,6 +26,7 @@ protected:
   void processMenuItem();
 private:
   Menu* p_menu; 
+  std::unique_ptr<Menu> up_menu;
 };
 
 
