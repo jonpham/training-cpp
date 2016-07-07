@@ -20,6 +20,7 @@ public:
 	// Menu(const &UserInput);
     int loadMenuItems();
     void displayUsageText();
+    void displayMenu();
 protected:
     int registerMenuItem(std::shared_ptr<IMenuItem>&);
     std::vector<std::shared_ptr<IMenuItem>> m_menuList;

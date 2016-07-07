@@ -26,6 +26,12 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
 }
 
+/* TO DO
+TEST_F(TestCommandLineInterface,GetUserInput){}
+
+TEST_F(TestCommandLineInterface,FakeUserInput){}
+*/
+
 //### Test Fixture Definition ###
 void TestCommandLineInterface::SetUp() {
 
