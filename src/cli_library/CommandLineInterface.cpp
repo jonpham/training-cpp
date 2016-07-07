@@ -4,8 +4,12 @@
 
 #include "CommandLineInterface.h"
 
-CommandLineInterface::CommandLineInterface() {
+CommandLineInterface::CommandLineInterface() :
+  up_menu(new Menu())
+{
   displayCliIntroduction();
+  p_menu=up_menu.get();
+  p_menu->displayUsageText();
 }
 
 CommandLineInterface::CommandLineInterface(Menu* menu) : 

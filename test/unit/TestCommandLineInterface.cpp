@@ -14,6 +14,17 @@ TEST_F(TestCommandLineInterfaceBase,IntroductoryText)
   ASSERT_THAT(output,::testing::HasSubstr("training"));
 }
 
+TEST_F(TestCommandLineInterface,DisplayMenu)
+{
+  // Setup
+  testing::internal::CaptureStdout();
+  // Test Function
+  uut_Cli.displayTopMenu();
+  // Validate Results
+  std::string output = ::testing::internal::GetCapturedStdout();
+  ASSERT_THAT(output,::testing::HasSubstr("[1]"));
+  ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
+}
 
 //### Test Fixture Definition ###
 void TestCommandLineInterface::SetUp() {
