@@ -11,13 +11,18 @@
 #include <vector>
 #include <memory>
 
-// class Menu {
-// public:
-//     int initializeMenu();
-// protected:
-// 	void 
-//     int registerMenuItem(std::shared_ptr<IMenuItem>&);
-//     std::vector<std::shared_ptr<IMenuItem>> m_menuList;
-// };
+#include "UserInput.h"
+#include "MenuItem.h"
+
+
+class Menu {
+public:
+	// Menu(const &UserInput);
+    int loadMenuItems();
+protected:
+	void displayUsage();
+    int registerMenuItem(std::shared_ptr<IMenuItem>&);
+    std::vector<std::shared_ptr<IMenuItem>> m_menuList;
+};
 
 #endif //CTA_CLI_LIBRARY_CLI_MENU_H_
