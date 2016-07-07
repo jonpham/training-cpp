@@ -33,6 +33,14 @@ void CommandLineInterface::displayCliIntroduction(){
                     << "# tools (JIRA,Confluence,Bitbucket). See the BAE P&S SW    #" << std::endl
                     << "# functional Confluence Space for more information.        #" << std::endl
                     << "############################################################\n";
+
+  introduction_strm << "############################################################\n"
+                    << "# The program displays a menu to execute sub-applications  #" << std::endl
+                    << "# on the command line. These are the true behavior of the  #" << std::endl
+                    << "# program. New 'menu items' can be derived and used to     #" << std::endl
+                    << "# extend the program.                                      #" << std::endl
+                    << "############################################################\n";
+
   std::cout << introduction_strm.str();
   return;
 }
