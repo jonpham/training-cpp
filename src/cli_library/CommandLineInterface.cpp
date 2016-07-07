@@ -8,6 +8,13 @@ CommandLineInterface::CommandLineInterface() {
   displayCliIntroduction();
 }
 
+CommandLineInterface::CommandLineInterface(Menu* menu) : 
+  p_menu(menu)
+{
+  displayCliIntroduction();
+  p_menu->displayUsageText();
+}
+
 void CommandLineInterface::displayTopMenu() {
     std::string user_input = this->getUserInput();
     std::cout << "User Input: " << user_input << std::endl;

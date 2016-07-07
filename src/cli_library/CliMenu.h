@@ -19,8 +19,8 @@ class Menu {
 public:
 	// Menu(const &UserInput);
     int loadMenuItems();
+    void displayUsageText();
 protected:
-	void displayUsage();
     int registerMenuItem(std::shared_ptr<IMenuItem>&);
     std::vector<std::shared_ptr<IMenuItem>> m_menuList;
 };

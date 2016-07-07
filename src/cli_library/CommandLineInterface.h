@@ -17,13 +17,15 @@
 class CommandLineInterface
 {
 public:
-  // CommandLineInterface(&Menu);
+  CommandLineInterface(Menu* menu);
   CommandLineInterface();
   void displayTopMenu();
 protected:
   void displayCliIntroduction();
   std::string getUserInput();
   void processMenuItem();
+private:
+  Menu* p_menu; 
 };
 
 
