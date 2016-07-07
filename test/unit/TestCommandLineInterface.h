@@ -7,12 +7,29 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "sample_static_lib/static_classes.h"
+// UUT Include
+#include "cli_library/CommandLineInterface.h"
 
-class TestCommandLineInterface : public ::testing::Test {
+class TestCommandLineInterfaceBase : public ::testing::Test {
 protected:
-    virtual void SetUp();
-    virtual void TearDown();
+  // Test Dummies
+
+  // UUT Definitions
+  // CommandLineInterface uut_Cli;
+
+  virtual void SetUp(){};
+  virtual void TearDown(){};
+};
+
+class TestCommandLineInterface : public TestCommandLineInterfaceBase {
+protected:
+  // Test Dummies
+
+  // UUT Definitions
+  CommandLineInterface uut_Cli;
+
+  virtual void SetUp();
+  virtual void TearDown();
 };
 
 

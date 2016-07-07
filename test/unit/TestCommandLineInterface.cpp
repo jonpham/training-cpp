@@ -5,12 +5,13 @@
 #include "TestCommandLineInterface.h"
 
 /* ####### TEST DEFINITION ####### */
-TEST_F(TestCommandLineInterface,IntroductoryText)
+TEST_F(TestCommandLineInterfaceBase,IntroductoryText)
 {
   testing::internal::CaptureStdout();
-  
-  std::string output = testing::internal::GetCapturedStdout();
-  ASSERT_TRUE(false);
+  CommandLineInterface uut_Cli;
+  std::string output = ::testing::internal::GetCapturedStdout();
+  ASSERT_THAT(output,::testing::HasSubstr("C++"));
+  ASSERT_THAT(output,::testing::HasSubstr("training"));
 }
 
 

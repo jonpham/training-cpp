@@ -114,7 +114,7 @@ if(BUILD_TESTS)
 
     macro(add_gtest test_source test_name)
         add_executable(${test_name} ${test_source} test/unit/unit_test.cpp)
-        target_link_libraries(${test_name} libgmock libgmock_main)
+        target_link_libraries(${test_name} libgmock libgmock_main cli_library)
         add_test(${test_name} bin/${test_name})
     endmacro(add_gtest)
 
@@ -126,7 +126,7 @@ if(BUILD_TESTS)
     # add_test(FunctionTest_CLI bin/FunctionTest_CLI)
 
     # UNIT TESTS
-    # add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
+    add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
 
 endif()
 
