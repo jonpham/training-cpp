@@ -60,16 +60,25 @@ target_link_libraries(cpp_training_app cli_library)
 option(BUILD_TESTS "BUILD_TESTS" ON)
 
 if(BUILD_TESTS)
+
+
+    
     enable_testing()
 
     include(ExternalProject)
 
-    file(GLOB_RECURSE GMOCK_URL "gmock-1.7.0.zip")
-    if (GMOCK_URL)
-        list(GET GMOCK_URL 0 GMOCK_URL)
+    if(DEFINED ENV{GMOCK_URL})
+        message("GMOCK_URL set to :" $ENV{GMOCK_URL})
+        set(GMOCK_URL $ENV{GMOCK_URL})
     else()
-        set(GMOCK_URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip)
+        file(GLOB_RECURSE GMOCK_URL "gmock-1.7.0.zip")
+        if (GMOCK_URL)
+            list(GET GMOCK_URL 0 GMOCK_URL)
+        else()
+            set(GMOCK_URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip)
+        endif()
     endif()
+
 
     # Download and install GoogleMock
     ExternalProject_Add(
