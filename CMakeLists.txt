@@ -60,8 +60,6 @@ target_link_libraries(cpp_training_app cli_library)
 option(BUILD_TESTS "BUILD_TESTS" ON)
 
 if(BUILD_TESTS)
-
-
     
     enable_testing()
 
@@ -124,6 +122,13 @@ if(BUILD_TESTS)
     # add_executable(FunctionTest_CLI ${FUNCTIONAL_TEST_SRC_FILES})
     # target_link_libraries(FunctionTest_CLI libgmock libgmock_main)
     # add_test(FunctionTest_CLI bin/FunctionTest_CLI)
+
+    # All UNIT TESTS
+
+    file(GLOB UNIT_TEST_SRC_FILES "test/unit/*.cpp")
+    add_executable(TestAllUnits ${UNIT_TEST_SRC_FILES})
+    target_link_libraries(TestAllUnits libgmock libgmock_main cli_library)
+    add_test(TestAllUnits bin/TestAllUnits)
 
     # UNIT TESTS
     add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
