@@ -17,3 +17,8 @@ yum -y install tmux vim-enhanced tree dos2unix
 # Make workspace directory
 mkdir -p /home/vagrant/workspace
 chown -R vagrant:vagrant /home/vagrant/workspace
+
+# Install Git LFS
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
+yum -y install git-lfs
+git lfs install --force

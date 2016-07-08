@@ -26,11 +26,11 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
 }
 
-/* TO DO
-TEST_F(TestCommandLineInterface,GetUserInput){}
 
-TEST_F(TestCommandLineInterface,FakeUserInput){}
-*/
+TEST_F(TestCommandLineInterface,GetUserInput){
+  // Use Google Mock to Fake User Input
+  ASSERT_TRUE(false);
+}
 
 //### Test Fixture Definition ###
 void TestCommandLineInterface::SetUp() {
