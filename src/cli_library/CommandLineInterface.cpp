@@ -25,14 +25,21 @@ void CommandLineInterface::displayTopMenu() {
   p_menu->displayMenu();
   std::string user_input = this->getUserInput();
   std::cout << "User Input: " << user_input << std::endl;
+  this->processMenuItem(user_input);
   return;
 }
 
 std::string CommandLineInterface::getUserInput() {
-  return std::string("EMsPTY");
+  return std::string("EMPTY");
 }
 
-void CommandLineInterface::processMenuItem(){}
+void CommandLineInterface::processMenuItem(std::string user_input)
+{
+  // Convert 'user_input' to int if possible
+
+  // Else Say menu Item not understood
+  return;
+}
 
 void CommandLineInterface::displayCliIntroduction(){
   std::cout << "\nHello, This is the C++ Training Repository for BAE P&S!" << std::endl;

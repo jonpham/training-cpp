@@ -23,7 +23,7 @@ public:
 protected:
   void displayCliIntroduction();
   std::string getUserInput();
-  void processMenuItem();
+  void processMenuItem(std::string user_input);
 private:
   Menu* p_menu; 
   std::unique_ptr<Menu> up_menu;
