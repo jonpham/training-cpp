@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <cstdlib>
 #include <vector>
 #include <memory>
@@ -19,6 +20,14 @@ public:
 protected:
 	std::string m_menuDescription{"NoDescription"};
 	std::string m_menuName{"NameNotSet"};
+};
+
+class SayHello : public IMenuItem 
+{
+public:
+  SayHello();
+  virtual std::string showDescription();
+  virtual void executeModule();
 };
 
 

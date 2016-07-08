@@ -20,7 +20,18 @@ TEST_F(TestMenuBase,UsageText)
   ASSERT_THAT(output,::testing::HasSubstr("Select"));
 }
 
- // NEXT STEP
+TEST_F(TestMenuBase,loadMenuItems){
+  // Setup 
+  Menu uut_Menu;
+  
+  // Test Action
+  ASSERT_EQ(0,uut_Menu.loadMenuItems());
+  
+  // Verification
+  int num_menu_items = uut_Menu.getNumMenuItems();
+  ASSERT_GT(num_menu_items,0);
+}
+
 TEST_F(TestMenu,MenuItemFormat)
 {
   // Setup 
@@ -32,7 +43,7 @@ TEST_F(TestMenu,MenuItemFormat)
   // Verification
 	std::string output = ::testing::internal::GetCapturedStdout();
 
-  ASSERT_THAT(output,::testing::HasSubstr("[1]"));
+  ASSERT_THAT(output,::testing::HasSubstr("[0]"));
 }
 
 TEST_F(TestMenu,MenuExit)
