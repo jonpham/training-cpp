@@ -10,6 +10,7 @@ CommandLineInterface::CommandLineInterface() :
   displayCliIntroduction();
   p_menu=up_menu.get();
   p_menu->displayUsageText();
+  p_menu->loadMenuItems();
 }
 
 CommandLineInterface::CommandLineInterface(Menu* menu) : 
@@ -17,16 +18,18 @@ CommandLineInterface::CommandLineInterface(Menu* menu) :
 {
   displayCliIntroduction();
   p_menu->displayUsageText();
+  p_menu->loadMenuItems();
 }
 
 void CommandLineInterface::displayTopMenu() {
-    std::string user_input = this->getUserInput();
-    std::cout << "User Input: " << user_input << std::endl;
-    return;
+  p_menu->displayMenu();
+  std::string user_input = this->getUserInput();
+  std::cout << "User Input: " << user_input << std::endl;
+  return;
 }
 
 std::string CommandLineInterface::getUserInput() {
-    return std::string("EMPTY");
+  return std::string("EMsPTY");
 }
 
 void CommandLineInterface::processMenuItem(){}

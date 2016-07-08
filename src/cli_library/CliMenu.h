@@ -17,13 +17,14 @@
 
 class Menu {
 public:
-	// Menu(const &UserInput);
-    int loadMenuItems();
-    void displayUsageText();
-    void displayMenu();
+  // Menu(const &UserInput);
+  int loadMenuItems();
+  void displayUsageText();
+  void displayMenu();
+  int getNumMenuItems();
 protected:
-    int registerMenuItem(std::shared_ptr<IMenuItem>&);
-    std::vector<std::shared_ptr<IMenuItem>> m_menuList;
+  int registerMenuItem(std::shared_ptr<IMenuItem>&);
+  std::vector<std::shared_ptr<IMenuItem>> m_menuList;
 };
 
 #endif //CTA_CLI_LIBRARY_CLI_MENU_H_

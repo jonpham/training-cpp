@@ -22,7 +22,7 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   uut_Cli.displayTopMenu();
   // Validate Results
   std::string output = ::testing::internal::GetCapturedStdout();
-  ASSERT_THAT(output,::testing::HasSubstr("[1]"));
+  ASSERT_THAT(output,::testing::HasSubstr("[0]"));
   ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
 }
 
