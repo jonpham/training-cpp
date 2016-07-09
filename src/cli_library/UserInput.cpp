@@ -23,11 +23,24 @@ std::string UserInput::requestInput()
 
 std::string UserInput::displayInputRequest()
 {
+  // std::regex exit_regex;
+  // bool match_regex{false};
   // Show Exit Option
   std::cout << "[exit] : Quit the Application." << std::endl;
   std::string user_input=this->requestInput();
 
-  if (user_input == "exit") {
+  // try {
+  //   std::regex test_regex("EXIT",
+  //           std::regex_constants::ECMAScript | std::regex_constants::icase);
+  //   match_regex = std::regex_search(user_input,test_regex);
+  // } 
+  // catch (const std::regex_error& e) {
+  //   std::cout << "regex_error caught: " << e.what() << std::endl;
+  //   return std::string("REGEX_ERROR");
+  // }
+
+  // if (match_regex) {
+  if (user_input == "exit"){
     // Execute Callbacks
     try {
       std::cout << "\nExiting..." << std::endl;
@@ -37,6 +50,8 @@ std::string UserInput::displayInputRequest()
       return std::string("RUNTIME_ERROR");
     }
   } 
-  else {}
+  else {
+    std::cout << "userinput != 'exit' or didn't match regex, its : " << user_input << std::endl;
+  }
   return user_input;
 }
