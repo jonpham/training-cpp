@@ -5,12 +5,12 @@
 #ifndef CTA_CLI_LIBRARY_USERINPUT_H_
 #define CTA_CLI_LIBRARY_USERINPUT_H_
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <vector>
-#include <memory>
+#include "InputBehavior.h"
 
+class UserInput : public InputBehavior {
+public:
+  virtual std::string requestInput();
+};
 
 
 #endif //CTA_CLI_LIBRARY_USERINPUT_H_

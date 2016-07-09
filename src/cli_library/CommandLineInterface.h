@@ -20,9 +20,9 @@ public:
   CommandLineInterface(Menu* menu);
   CommandLineInterface();
   void displayTopMenu();
+  std::string getUserInput();
 protected:
   void displayCliIntroduction();
-  std::string getUserInput();
   void processMenuItem(std::string user_input);
 private:
   Menu* p_menu; 

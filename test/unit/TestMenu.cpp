@@ -46,21 +46,6 @@ TEST_F(TestMenu,MenuItemFormat)
   ASSERT_THAT(output,::testing::HasSubstr("[0]"));
 }
 
-TEST_F(TestMenu,MenuExit)
-{
-  // Setup 
-  testing::internal::CaptureStdout();
-  
-  // Test Action
-  uut_Menu.displayMenu();
-  
-  // Verification
-	std::string output = ::testing::internal::GetCapturedStdout();
-
-  ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
-}
-
-
 //### Test Fixture Definition ###
 void TestMenu::SetUp() {
 	uut_Menu.loadMenuItems();
