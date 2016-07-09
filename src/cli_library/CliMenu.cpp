@@ -29,7 +29,5 @@ void Menu::displayMenu(){
     std::string item_name = m_menuList[i]->getItemName();
     std::cout << "[" << i << "] : " << item_name << std::endl;    
   }
-  // Show Exit Option
-  std::cout << "[exit] : Quit the Application." << std::endl;
   // Launch User Input
 }

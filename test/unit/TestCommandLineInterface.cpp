@@ -23,14 +23,24 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   // Validate Results
   std::string output = ::testing::internal::GetCapturedStdout();
   ASSERT_THAT(output,::testing::HasSubstr("[0]"));
-  ASSERT_THAT(output,::testing::HasSubstr("[exit]"));
+  ASSERT_THAT(output,::testing::HasSubstr("User Input:"));
 }
 
 
 TEST_F(TestCommandLineInterface,GetUserInput){
-  // Use Google Mock to Fake User Input
-  ASSERT_TRUE(false);
+  /* Purpose of the getUserInput Method is to present User with a Prompt for options. Accept their response.
+   * and return the response as a string. 
+   */ 
+  // Setup
+  testing::internal::CaptureStdout();
+  // Test Function
+  std::string input = uut_Cli.getUserInput();
+  // Validate Results
+  std::string output = ::testing::internal::GetCapturedStdout();
+  ASSERT_THAT(output,::testing::HasSubstr("Please enter"));
 }
+
+// Use Google Mock to Fake User Input. 
 
 //### Test Fixture Definition ###
 void TestCommandLineInterface::SetUp() {

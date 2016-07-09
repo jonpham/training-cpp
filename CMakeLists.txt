@@ -133,6 +133,7 @@ if(BUILD_TESTS)
     # UNIT TESTS
     add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
     add_gtest(test/unit/TestMenu.cpp TestMenu)
+    add_gtest(test/unit/TestInputBehavior.cpp TestInputBehavior)    
 
 endif()
 
