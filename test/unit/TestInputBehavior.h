@@ -16,6 +16,10 @@ public:
     return std::string("DUMMY_INPUT");
   };
 
+  virtual std::string displayInputRequest(){
+    return std::string("DUMMY_INPUT_REQUEST");
+  };
+
   uint getCallbackVectorSize(){
     return InputBehavior::m_callbackVector.size();
   }    

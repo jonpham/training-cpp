@@ -17,8 +17,10 @@ typedef std::vector<VoidCallback> VoidCallbackVector;
 class InputBehavior {
 public :
   virtual std::string requestInput()=0;
+  virtual std::string displayInputRequest()=0;
   virtual void executeCallbacks();
   virtual int addCallback(VoidCallback);
+  virtual ~InputBehavior(){};
 protected : 
   VoidCallbackVector m_callbackVector;
 };

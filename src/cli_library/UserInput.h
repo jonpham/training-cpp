@@ -9,7 +9,10 @@
 
 class UserInput : public InputBehavior {
 public:
+  UserInput(){};
+  UserInput(VoidCallback);
   virtual std::string requestInput();
+  virtual std::string displayInputRequest();
 };
 
 
