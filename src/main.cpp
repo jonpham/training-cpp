@@ -11,6 +11,7 @@ int main() {
   std::function<void()> exitMethod = [&](){ programActive=false; };
 
   // Instantiate Top-Level Objects
+  // std::unique_ptr<UserInput> cli_user_input(new UserInput(exitMethod));
   std::unique_ptr<Menu> cli_menu(new Menu());
   std::unique_ptr<CommandLineInterface> cli(new CommandLineInterface(cli_menu.get()));
 

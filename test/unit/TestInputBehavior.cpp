@@ -15,6 +15,10 @@ TEST_F(TestInputBehavior,requestInput){
   ASSERT_EQ("DUMMY_INPUT",uut_InputBehavior.requestInput());
 }
 
+TEST_F(TestInputBehavior,displayInputRequest){
+  ASSERT_EQ("DUMMY_INPUT_REQUEST",uut_InputBehavior.displayInputRequest());
+}
+
 TEST_F(TestInputBehavior,addCallback){
   // Setup
   std::function<void()> test_callback=std::bind(&sayHello);
