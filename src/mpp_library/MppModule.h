@@ -15,6 +15,7 @@
 #include <sstream>
 #include <vector>
 #include <memory>
+#include <stdexcept>
 
 class MppModule : public IMenuItem {
 public:

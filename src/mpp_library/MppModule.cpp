@@ -30,8 +30,15 @@ std::string MppModule::getDescription(){
 // "Main Method"
 void MppModule::executeModule(){
   this->requestDataSet();
+  long long result;
+  try {
+    result = m_maxPairedProductCalculator.calculate(getDataSet());
+  } catch (const std::out_of_range& oor) {
+    std::cerr << "Out Of Range Error : " << oor.what() << std::endl;
+    return;
+  }
   std::cout << "The Maximum Pairwise product is : " <<
-    m_maxPairedProductCalculator.calculate(getDataSet()) << std::endl;
+    result << std::endl;
   return;
 }
 
