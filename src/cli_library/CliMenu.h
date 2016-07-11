@@ -14,14 +14,14 @@
 #include "UserInput.h"
 #include "MenuItem.h"
 
-
 class Menu {
 public:
   // Member Methods
-  int loadMenuItems();
-  void displayUsageText();
-  void displayMenu();
-  int getNumMenuItems();
+  virtual int loadMenuItems();
+  virtual void displayUsageText();
+  virtual void displayMenu();
+  virtual int getNumMenuItems();
+  virtual IMenuItem* getMenuItem(uint item_index);
 protected:
   int registerMenuItem(std::shared_ptr<IMenuItem>&);
   std::vector<std::shared_ptr<IMenuItem>> m_menuList;

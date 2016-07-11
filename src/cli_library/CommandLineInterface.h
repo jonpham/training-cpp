@@ -24,9 +24,9 @@ public:
   std::string getUserInput();
   void setInputBehavior(InputBehavior* input_behavior);
   void setMenu(Menu* menu);
+  void processMenuItem(std::string user_input);
 protected:
   void displayCliIntroduction();
-  void processMenuItem(std::string user_input);
 private:
   // Pointer Storage
   Menu* p_menu{nullptr}; // If Menu Is prexisting

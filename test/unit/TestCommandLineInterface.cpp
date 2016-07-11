@@ -29,7 +29,6 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   // Validate Results
   std::string output = ::testing::internal::GetCapturedStdout();
   ASSERT_THAT(output,::testing::HasSubstr("[0]"));
-  ASSERT_THAT(output,::testing::HasSubstr("User Input:"));
 }
 
 TEST_F(TestCommandLineInterface,GetUserInput){
@@ -47,6 +46,31 @@ TEST_F(TestCommandLineInterface,GetUserInput){
 
   // Validate Results
   ASSERT_THAT(input,::testing::HasSubstr("Please enter"));
+}
+
+TEST_F(TestCommandLineInterface,processMenuItem){
+  /* Purpose of the processMenuItem Method is to output its Name and Description
+   * & trigger execution of a Menu Item's executeModule Method.
+   */ 
+  // Setup
+  uut_Cli.setMenu(p_mock_menu);
+  std::string menu_selection = "0";
+
+  // Set Return Expectations:
+  EXPECT_CALL(mock_menu,getMenuItem(uint(0)))
+    .WillOnce(Return(p_mock_menuItem));
+
+  EXPECT_CALL(mock_menuItem,getItemName())
+    .WillOnce(Return("FakeModule"));
+
+  EXPECT_CALL(mock_menuItem,getDescription())
+    .WillOnce(Return("FakeDescription"));
+
+  EXPECT_CALL(mock_menuItem,executeModule())
+    .WillOnce(Return());
+
+  // Test Function
+  ASSERT_NO_THROW(uut_Cli.processMenuItem(menu_selection));
 }
 
 // Use Google Mock to Fake User Input. 

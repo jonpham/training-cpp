@@ -15,7 +15,7 @@ SayHello::SayHello()
   m_menuDescription = description_strm.str();
 }
 
-std::string SayHello::showDescription()
+std::string SayHello::getDescription()
 {
   std::cout << m_menuDescription << std::endl;
   return m_menuDescription;
