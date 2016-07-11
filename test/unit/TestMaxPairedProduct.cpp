@@ -48,7 +48,20 @@ TEST_F(TestMaxPairedProduct,highDuplicateNumbers)
   ASSERT_EQ(answer,result);
 }
 
-TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset){
+TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Limit){
+  // Setup Test Data
+  int max_num_data_pnts = 100000; // 10^5
+  int max_data_range = 20;
+  // int n = std::rand() % max_num_data_pnts + 2;
+  std::vector<int> test_data;
+  for (int i = 0; i < max_num_data_pnts; ++i) {
+    test_data.push_back(rand() % max_data_range);
+  }
+
+  ASSERT_NO_THROW(uut_mppCalculator.calculate(test_data)) << "Set Size Limit validation broken.";
+}
+
+TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Overflow){
   // Setup Test Data
   int max_num_data_pnts = 100000; // 10^5
   int max_data_range = 20;
@@ -61,7 +74,54 @@ TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset){
   ASSERT_THROW(uut_mppCalculator.calculate(test_data),std::out_of_range) << "N is Greater than Allowed.";
 }
 
-// Use Google Mock to Fake User Input. 
+TEST_F(TestMaxPairedProduct,validateMinMaxDataSize_Normal){
+  // Setup Test Data
+  int max_num_data_pnts = 100; // 10^5
+  int max_data_range = 200000;
+  int min_data_range = 2; 
+  // int n = std::rand() % max_num_data_pnts + 2;
+  std::vector<int> test_data;
+  for (int i = 0; i < max_num_data_pnts+1; ++i) {
+    test_data.push_back(rand() % max_data_range);
+  }
+  test_data.push_back(int(min_data_range));
+  test_data.push_back(int(max_data_range));
+
+  ASSERT_NO_THROW(uut_mppCalculator.calculate(test_data)) << "Min and Max Validation Broken";
+}
+
+TEST_F(TestMaxPairedProduct,validateMinMaxDataSize_TooSmall){
+  // Setup Test Data
+  int max_num_data_pnts = 100; // 10^5
+  int max_data_range = 200000;
+  int min_data_range = 2; 
+  // int n = std::rand() % max_num_data_pnts + 2;
+  std::vector<int> test_data;
+  for (int i = 0; i < max_num_data_pnts+1; ++i) {
+    test_data.push_back(rand() % max_data_range);
+  }
+  test_data.push_back(int(min_data_range-1));
+  test_data.push_back(int(max_data_range));
+
+  ASSERT_THROW(uut_mppCalculator.calculate(test_data),std::out_of_range) << "Min Validation Broken";
+}
+
+TEST_F(TestMaxPairedProduct,validateMinMaxDataSize_TooBig){
+  // Setup Test Data
+  int max_num_data_pnts = 100; // 10^5
+  int max_data_range = 200000;
+  int min_data_range = 2; 
+  // int n = std::rand() % max_num_data_pnts + 2;
+  std::vector<int> test_data;
+  for (int i = 0; i < max_num_data_pnts+1; ++i) {
+    test_data.push_back(rand() % max_data_range);
+  }
+  test_data.push_back(int(min_data_range));
+  test_data.push_back(int(max_data_range+1));
+
+  ASSERT_THROW(uut_mppCalculator.calculate(test_data),std::out_of_range) << "Max Validation Broken";
+}
+
 
 //### Test Fixture Definition ###
 void TestMaxPairedProduct::SetUp() {
