@@ -19,7 +19,7 @@
 class MppModule : public IMenuItem {
 public:
   MppModule();
-  virtual std::string showDescription();
+  virtual std::string getDescription();
   virtual void executeModule();
   virtual void setInputBehavior(InputBehavior* input_behavior);
   // Module Specific Behavior

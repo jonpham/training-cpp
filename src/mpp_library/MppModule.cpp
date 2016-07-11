@@ -23,15 +23,12 @@ void MppModule::setInputBehavior(InputBehavior* input_behavior){
   p_inputBehavior=input_behavior;
 }
 
-std::string MppModule::showDescription(){
+std::string MppModule::getDescription(){
   return m_menuDescription;
 }
 
 // "Main Method"
 void MppModule::executeModule(){
-  std::cout << m_menuName << std::endl;
-  std::cout << "\n" << showDescription() << "\n";
-
   this->requestDataSet();
   std::cout << "The Maximum Pairwise product is : " <<
     m_maxPairedProductCalculator.calculate(getDataSet()) << std::endl;
