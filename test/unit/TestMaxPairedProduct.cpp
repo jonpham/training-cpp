@@ -7,16 +7,13 @@
 using ::testing::Return;
 
 /* ####### TEST DEFINITION ####### */
-TEST_F(TestMaxPairedProduct,requestDataSet)
+TEST_F(TestMaxPairedProduct,lowNumbers)
 {
-  testing::internal::CaptureStdout();
+  // Setup
   
-  // Check for Prompts
-  uut_mpp.requestDataSet();
+  // Test
 
-  std::string output = ::testing::internal::GetCapturedStdout();
-  ASSERT_THAT(output,::testing::HasSubstr("How large is the data set you wish to input"));
-  ASSERT_THAT(output,::testing::HasSubstr("Input your data set with only space separators"));
+  // Verify
 }
   
 

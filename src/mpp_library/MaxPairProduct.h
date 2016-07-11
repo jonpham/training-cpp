@@ -7,7 +7,8 @@
 #include <vector>
 
 class MaxPairProduct {
-  int MaxPairwiseProduct(const std::vector<int>& numbers) {};
+public:
+  int calculate(const std::vector<int>& numbers) {};
 };
 
 #endif //CTA_MPP_LIBRARY_MAXPAIRPRODUCT_H_

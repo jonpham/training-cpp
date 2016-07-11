@@ -10,8 +10,11 @@
 #include "cli_library/MenuItemInput.h"
 #include "MaxPairProduct.h"
 
-
+#include <string>
+#include <iostream>
+#include <sstream>
 #include <vector>
+#include <memory>
 
 class MppModule : public IMenuItem {
 public:
@@ -31,6 +34,7 @@ protected:
   MaxPairProduct m_maxPairedProductCalculator;
 private:
   InputBehavior* p_inputBehavior{nullptr}; 
+  std::unique_ptr<InputBehavior> up_inputBehavior;
   std::vector<int> m_dataSet;
   uint m_dataSize{0};
 };
