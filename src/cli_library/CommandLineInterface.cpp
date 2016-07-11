@@ -69,7 +69,9 @@ void CommandLineInterface::displayTopMenu() {
   p_menu->displayMenu();
   std::string user_input = this->getUserInput();
   // std::cout << "User Input: " << user_input << std::endl;
-  this->processMenuItem(user_input);
+  if (user_input != "exit") {
+    this->processMenuItem(user_input);    
+  }
   return;
 }
 
@@ -109,6 +111,8 @@ void CommandLineInterface::processMenuItem(std::string user_input)
 
   item->executeModule();
 
+  std::cout << "\n##################### MODULE FINISHED ######################\n\n";
+
   return;
 }
 
@@ -124,7 +128,7 @@ void CommandLineInterface::displayCliIntroduction(){
                     << "# used as a training example for Atlassian productivity    #" << std::endl
                     << "# tools (JIRA,Confluence,Bitbucket). See the BAE P&S SW    #" << std::endl
                     << "# functional Confluence Space for more information.        #" << std::endl
-                    << "############################################################\n";
+                    << "############################################################\n\n";
 
   introduction_strm << "############################################################\n"
                     << "# The program displays a menu to execute sub-applications  #" << std::endl
