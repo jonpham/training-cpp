@@ -2,6 +2,9 @@
 // Created by Jonathan Pham
 //
 
+#include <stdlib.h>
+#include <vector>
+
 #include "TestMaxPairedProduct.h"
 
 using ::testing::Return;
@@ -9,11 +12,20 @@ using ::testing::Return;
 /* ####### TEST DEFINITION ####### */
 TEST_F(TestMaxPairedProduct,lowNumbers)
 {
-  // Setup
-  
-  // Test
+  // Setup Test Data
+  // int max_num_data_pnts = 10;
+  // int max_data_range = 20;
+  // int n = std::rand() % max_num_data_pnts + 2;
+  // std::vector<int> test_data;
+  // for (int i = 0; i < n; ++i) {
+  //   test_data.push_back(rand() % max_data_range);
+  // }
 
-  // Verify
+  std::vector<int> test_data = {10, 4, 5, 19, 14};
+  int answer = 19*14;
+  
+  // Test // Verify
+  ASSERT_EQ(answer,uut_mppCalculator.calculate(test_data));
 }
   
 
