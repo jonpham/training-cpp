@@ -51,7 +51,8 @@ std::string UserInput::displayInputRequest()
     }
   } 
   else {
-    std::cout << "userinput != 'exit' or didn't match regex, its : " << user_input << std::endl;
+    // std::cout << "userinput != 'exit' or didn't match regex, its : " << user_input << std::endl;
+    std::cout << "User has selected option : " << user_input << std::endl;
   }
   return user_input;
 }
