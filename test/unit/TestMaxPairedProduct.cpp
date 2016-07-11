@@ -27,7 +27,18 @@ TEST_F(TestMaxPairedProduct,lowNumbers)
   // Test // Verify
   ASSERT_EQ(answer,uut_mppCalculator.calculate(test_data));
 }
+
+TEST_F(TestMaxPairedProduct,highNumbers)
+{
+  // Setup Test Data
+  int max_data_range = 100000;
   
+  std::vector<int> test_data = {10, 4, 5, max_data_range-10, max_data_range};
+  int answer = (max_data_range-10)*max_data_range;
+  
+  // Test // Verify
+  ASSERT_EQ(answer,uut_mppCalculator.calculate(test_data));
+}
 
 // Use Google Mock to Fake User Input. 
 
