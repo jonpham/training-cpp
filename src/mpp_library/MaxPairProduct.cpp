@@ -29,12 +29,29 @@ int MaxPairProduct::calculate(const std::vector<int>& data_set)
 
 bool MaxPairProduct::validMinMaxDataInput(const std::vector<int>& data_set)
 {
-  int max_pt{2};
-  int min_pt{200000}; 
+  int min_limit{2};
+  int max_limit{200000};
+  int max_pt=min_limit;
+  int min_pt=max_limit; 
   for ( int i = 0; i < data_set.size() ; ++i){
-    break;
+    int current_data=data_set[i];
+    if (current_data > max_pt) 
+    {
+      max_pt=current_data;
+    }  
+    else if ( current_data < min_pt )
+    {
+      min_pt=current_data;
+    } else {}
   }
-  return true;
+  if ((min_pt < min_limit) || (max_pt > max_limit))
+  {
+    return false;
+  }
+  else 
+  {
+    return true;
+  }
 }
 
 bool MaxPairProduct::validDataSetSize(const std::vector<int>& data_set)
