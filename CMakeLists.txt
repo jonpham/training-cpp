@@ -16,7 +16,7 @@ find_package(Threads REQUIRED)
     # Global Software Dependencies and Linked Libraries
 #]]
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fPIC" )
 set(CMAKE_BUILD_TYPE Debug)
 
 # Set Output Directories
@@ -43,6 +43,7 @@ add_library(cli_library STATIC ${CLI_LIB_SRC_FILES})
 ##### SHARED LIBRARY DEFINITION #####
 file(GLOB MPP_SHARED_LIB_SRC_FILES "src/mpp_library/*.cpp")
 add_library(mpp_library SHARED ${MPP_SHARED_LIB_SRC_FILES} )
+target_link_libraries(mpp_library cli_library)
 
 ##### MAIN EXECUTABLE DEFINITION #####
 
