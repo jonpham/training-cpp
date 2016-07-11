@@ -9,15 +9,16 @@
 #include "gmock/gmock.h"
 // UUT Include
 #include "cli_library/CommandLineInterface.h"
+#include "unit/mocks/mockInputBehavior.h"
 
 class TestCommandLineInterfaceBase : public ::testing::Test {
 protected:
   // Test Dummies
-
+  std::unique_ptr<InputBehavior> mockptr_input;
   // UUT Definitions
   // CommandLineInterface uut_Cli;
 
-  virtual void SetUp(){};
+  virtual void SetUp();
   virtual void TearDown(){};
 };
 

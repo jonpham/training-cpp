@@ -32,7 +32,7 @@ TEST_F(TestMenuBase,loadMenuItems){
   ASSERT_GT(num_menu_items,0);
 }
 
-TEST_F(TestMenu,MenuItemFormat)
+TEST_F(TestMenu,displayMenu_MenuItemFormat)
 {
   // Setup 
   testing::internal::CaptureStdout();

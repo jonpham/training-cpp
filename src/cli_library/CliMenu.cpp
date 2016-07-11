@@ -4,9 +4,21 @@
 
 #include "CliMenu.h"
 
+
 int Menu::loadMenuItems() {
-  std::shared_ptr<IMenuItem> menu_item1(new SayHello());
-  this->registerMenuItem(menu_item1);
+  if (m_menuInitialized==false) 
+  {
+    std::shared_ptr<IMenuItem> menu_item1(new SayHello());
+    this->registerMenuItem(menu_item1);
+
+    // Ensure this Function will not run again.
+    m_menuInitialized = true; 
+  } 
+  else 
+  {
+    // Do Nothing
+  }
+
   return 0;
 }
 

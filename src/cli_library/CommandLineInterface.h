@@ -17,16 +17,23 @@
 class CommandLineInterface
 {
 public:
-  CommandLineInterface(Menu* menu);
   CommandLineInterface();
+  CommandLineInterface(InputBehavior* input_behavior);
+  CommandLineInterface(Menu* menu,InputBehavior* input_behavior);
   void displayTopMenu();
   std::string getUserInput();
+  void setInputBehavior(InputBehavior* input_behavior);
+  void setMenu(Menu* menu);
 protected:
   void displayCliIntroduction();
   void processMenuItem(std::string user_input);
 private:
-  Menu* p_menu; 
-  std::unique_ptr<Menu> up_menu;
+  // Pointer Storage
+  Menu* p_menu; // If Menu Is prexisting
+  std::unique_ptr<Menu> up_menu; // Otherwise
+
+  InputBehavior* p_inputBehavior; 
+
 };
 
 
