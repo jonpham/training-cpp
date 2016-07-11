@@ -41,9 +41,8 @@ file(GLOB CLI_LIB_SRC_FILES "src/cli_library/*.cpp")
 add_library(cli_library STATIC ${CLI_LIB_SRC_FILES})
 
 ##### SHARED LIBRARY DEFINITION #####
-
-# set(SHARED_LIB_SRC_FILES src/sample_shared_lib/shared_classes.cpp)
-# add_library(sample_shared_lib SHARED ${SHARED_LIB_SRC_FILES} )
+file(GLOB MPP_SHARED_LIB_SRC_FILES "src/mpp_library/*.cpp")
+add_library(mpp_library SHARED ${MPP_SHARED_LIB_SRC_FILES} )
 
 ##### MAIN EXECUTABLE DEFINITION #####
 
@@ -56,7 +55,7 @@ set(MAIN_SRC_FILES src/main.cpp)
 
 # Define & Link Target + Dependencies
 add_executable(cpp_training_app ${MAIN_SRC_FILES})
-target_link_libraries(cpp_training_app cli_library)
+target_link_libraries(cpp_training_app cli_library mpp_library)
 
 ##### UNIT TEST DEFINITION #####
 # Google Mock/Test Dependency
@@ -115,7 +114,7 @@ if(BUILD_TESTS)
 
     macro(add_gtest test_source test_name)
         add_executable(${test_name} ${test_source} test/unit/unit_test.cpp)
-        target_link_libraries(${test_name} libgmock libgmock_main cli_library)
+        target_link_libraries(${test_name} libgmock libgmock_main cli_library mpp_library)
         add_test(${test_name} bin/${test_name})
     endmacro(add_gtest)
 
@@ -130,7 +129,7 @@ if(BUILD_TESTS)
 
     file(GLOB UNIT_TEST_SRC_FILES "test/unit/*.cpp")
     add_executable(TestAllUnits ${UNIT_TEST_SRC_FILES})
-    target_link_libraries(TestAllUnits libgmock libgmock_main cli_library)
+    target_link_libraries(TestAllUnits libgmock libgmock_main cli_library mpp_library)
     add_test(TestAllUnits bin/TestAllUnits)
 
     # UNIT TESTS
@@ -138,6 +137,7 @@ if(BUILD_TESTS)
     add_gtest(test/unit/TestMenu.cpp TestMenu)
     add_gtest(test/unit/TestInputBehavior.cpp TestInputBehavior)    
     add_gtest(test/unit/TestUserInput.cpp TestUserInput)
+    add_gtest(test/unit/TestMaxPairedProduct.cpp TestMaxPairedProduct)
 
 endif()
 
