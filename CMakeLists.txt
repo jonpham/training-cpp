@@ -17,6 +17,8 @@ find_package(Threads REQUIRED)
 #]]
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_BUILD_TYPE Debug)
+
 # Set Output Directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
@@ -25,6 +27,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 # Includes
 include_directories(include)
 include_directories(src)
+include_directories(test)
 
 #[[ Add All Corresponding Source Directories and Targets based on Directory.
 #    All "subdirectories" should contain their own 'CMakeLists.txt' file.
@@ -60,8 +63,6 @@ target_link_libraries(cpp_training_app cli_library)
 option(BUILD_TESTS "BUILD_TESTS" ON)
 
 if(BUILD_TESTS)
-
-
     
     enable_testing()
 
@@ -114,7 +115,7 @@ if(BUILD_TESTS)
 
     macro(add_gtest test_source test_name)
         add_executable(${test_name} ${test_source} test/unit/unit_test.cpp)
-        target_link_libraries(${test_name} libgmock libgmock_main)
+        target_link_libraries(${test_name} libgmock libgmock_main cli_library)
         add_test(${test_name} bin/${test_name})
     endmacro(add_gtest)
 
@@ -125,8 +126,18 @@ if(BUILD_TESTS)
     # target_link_libraries(FunctionTest_CLI libgmock libgmock_main)
     # add_test(FunctionTest_CLI bin/FunctionTest_CLI)
 
+    # All UNIT TESTS
+
+    file(GLOB UNIT_TEST_SRC_FILES "test/unit/*.cpp")
+    add_executable(TestAllUnits ${UNIT_TEST_SRC_FILES})
+    target_link_libraries(TestAllUnits libgmock libgmock_main cli_library)
+    add_test(TestAllUnits bin/TestAllUnits)
+
     # UNIT TESTS
-    # add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
+    add_gtest(test/unit/TestCommandLineInterface.cpp TestCommandLineInterface)
+    add_gtest(test/unit/TestMenu.cpp TestMenu)
+    add_gtest(test/unit/TestInputBehavior.cpp TestInputBehavior)    
+    add_gtest(test/unit/TestUserInput.cpp TestUserInput)
 
 endif()
 

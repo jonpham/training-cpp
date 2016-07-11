@@ -7,14 +7,27 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <cstdlib>
 #include <vector>
 #include <memory>
 
 class IMenuItem {
 public:
-    virtual void showDescription()=0;
-    virtual void whatever()=0;
+	virtual std::string getItemName(){return m_menuName;};
+  virtual std::string getDescription()=0;
+  virtual void executeModule()=0;
+protected:
+	std::string m_menuDescription{"NoDescription"};
+	std::string m_menuName{"NameNotSet"};
+};
+
+class SayHello : public IMenuItem 
+{
+public:
+  SayHello();
+  virtual std::string getDescription();
+  virtual void executeModule();
 };
 
 

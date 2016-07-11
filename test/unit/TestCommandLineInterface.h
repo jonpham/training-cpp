@@ -7,12 +7,40 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "sample_static_lib/static_classes.h"
+// UUT Include
+#include "cli_library/CommandLineInterface.h"
+#include "unit/mocks/mockInputBehavior.h"
+#include "unit/mocks/mockMenu.h"
+#include "unit/mocks/mockMenuItem.h"
 
-class TestCommandLineInterface : public ::testing::Test {
+class TestCommandLineInterfaceBase : public ::testing::Test {
 protected:
-    virtual void SetUp();
-    virtual void TearDown();
+  // Test Dummies
+  mockInputBehavior mock_input;
+  InputBehavior* p_mock_input= &mock_input;
+
+  mockMenu mock_menu;
+  Menu* p_mock_menu= &mock_menu;
+
+  mockMenuItem mock_menuItem;
+  IMenuItem* p_mock_menuItem = &mock_menuItem;
+  
+  // UUT Definitions
+  // CommandLineInterface uut_Cli;
+
+  virtual void SetUp(){};
+  virtual void TearDown(){};
+};
+
+class TestCommandLineInterface : public TestCommandLineInterfaceBase {
+protected:
+  // Test Dummies
+
+  // UUT Definitions
+  CommandLineInterface uut_Cli;
+
+  virtual void SetUp();
+  virtual void TearDown();
 };
 
 
