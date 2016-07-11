@@ -41,5 +41,15 @@ void Menu::displayMenu(){
     std::string item_name = m_menuList[i]->getItemName();
     std::cout << "[" << i << "] : " << item_name << std::endl;    
   }
-  // Launch User Input
+}
+
+IMenuItem* Menu::getMenuItem(uint item_index)
+{
+  try {
+    return m_menuList.at(item_index).get();
+  }
+  catch (const std::out_of_range& oor) {
+    std::cerr << "Out of Range error: " << oor.what() << '\n';
+    return nullptr;
+  }
 }

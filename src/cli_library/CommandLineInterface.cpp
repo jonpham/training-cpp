@@ -68,7 +68,7 @@ void CommandLineInterface::setMenu(Menu* menu){
 void CommandLineInterface::displayTopMenu() {
   p_menu->displayMenu();
   std::string user_input = this->getUserInput();
-  std::cout << "User Input: " << user_input << std::endl;
+  // std::cout << "User Input: " << user_input << std::endl;
   this->processMenuItem(user_input);
   return;
 }

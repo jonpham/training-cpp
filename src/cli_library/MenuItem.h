@@ -15,7 +15,7 @@
 class IMenuItem {
 public:
 	virtual std::string getItemName(){return m_menuName;};
-  virtual std::string showDescription()=0;
+  virtual std::string getDescription()=0;
   virtual void executeModule()=0;
 protected:
 	std::string m_menuDescription{"NoDescription"};
@@ -26,7 +26,7 @@ class SayHello : public IMenuItem
 {
 public:
   SayHello();
-  virtual std::string showDescription();
+  virtual std::string getDescription();
   virtual void executeModule();
 };
 
