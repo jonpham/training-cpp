@@ -7,8 +7,32 @@
 
 
 #include "cli_library/MenuItem.h"
+#include "cli_library/MenuItemInput.h"
 #include "MaxPairProduct.h"
 
-//
+
+#include <vector>
+
+class MppModule : public IMenuItem {
+public:
+  MppModule();
+  virtual std::string showDescription();
+  virtual void executeModule();
+  virtual void setInputBehavior(InputBehavior* input_behavior);
+  // Module Specific Behavior
+  virtual int setDataSetSize(uint set_size);  
+  virtual uint getDataSetSize();
+  
+  virtual std::vector<int> requestDataSet();
+  virtual std::vector<int> getDataSet();
+  virtual int setDataSet(std::vector<int> dataset);
+
+protected:
+  MaxPairProduct m_maxPairedProductCalculator;
+private:
+  InputBehavior* p_inputBehavior{nullptr}; 
+  std::vector<int> m_dataSet;
+  uint m_dataSize{0};
+};
 
 #endif //CTA_MPP_LIBRARY_MAXPAIRPRODUCT_MODULE_H_

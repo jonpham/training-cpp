@@ -25,6 +25,7 @@ protected:
   // Test Dummies
 
   // UUT Definitions
+  MppModule uut_mpp;
 
   virtual void SetUp();
   virtual void TearDown();
