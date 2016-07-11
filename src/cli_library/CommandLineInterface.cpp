@@ -93,9 +93,22 @@ std::string CommandLineInterface::getUserInput() {
 
 void CommandLineInterface::processMenuItem(std::string user_input)
 {
+  int user_selection{-1};
   // Convert 'user_input' to int if possible
+  try {
+    user_selection = std::stoi(user_input);
+  } catch (const std::invalid_argument& exception) {
+    std::cout << "There was a problem processing your menu choice. Please Try again. Error : " << exception.what() << '\n';
+    return;
+  }
+  //Get Menu Item
+  IMenuItem* item = p_menu->getMenuItem(static_cast<uint>(user_selection));
+  // Execute the Menu Item Behavior
+  std::cout << "Now executing Menu Module : " << item->getItemName() << "." << std::endl;
+  std::cout << "Description : " << item->getDescription() << ".\n" << std::endl;
 
-  // Else Say menu Item not understood
+  item->executeModule();
+
   return;
 }
 
