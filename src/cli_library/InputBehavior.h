@@ -7,9 +7,23 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>
+#include <stdexcept>
+#include <functional>
 #include <vector>
-#include <memory>
+
+typedef std::function<void()> VoidCallback;
+typedef std::vector<VoidCallback> VoidCallbackVector;
+
+class InputBehavior {
+public :
+  virtual std::string requestInput()=0;
+  virtual std::string displayInputRequest()=0;
+  virtual void executeCallbacks();
+  virtual int addCallback(VoidCallback);
+  virtual ~InputBehavior(){};
+protected : 
+  VoidCallbackVector m_callbackVector;
+};
 
 
 

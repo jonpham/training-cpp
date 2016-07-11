@@ -14,15 +14,19 @@
 #include "UserInput.h"
 #include "MenuItem.h"
 
-
 class Menu {
 public:
-	// Menu(const &UserInput);
-    int loadMenuItems();
+  // Member Methods
+  virtual int loadMenuItems();
+  virtual void displayUsageText();
+  virtual void displayMenu();
+  virtual int getNumMenuItems();
+  virtual IMenuItem* getMenuItem(uint item_index);
 protected:
-	void displayUsage();
-    int registerMenuItem(std::shared_ptr<IMenuItem>&);
-    std::vector<std::shared_ptr<IMenuItem>> m_menuList;
+  int registerMenuItem(std::shared_ptr<IMenuItem>&);
+  std::vector<std::shared_ptr<IMenuItem>> m_menuList;
+private:
+  bool m_menuInitialized{false};
 };
 
 #endif //CTA_CLI_LIBRARY_CLI_MENU_H_
