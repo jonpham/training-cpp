@@ -54,8 +54,8 @@ TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Limit){
   int max_data_range = 20;
   // int n = std::rand() % max_num_data_pnts + 2;
   std::vector<int> test_data;
-  for (int i = 0; i < max_num_data_pnts; ++i) {
-    test_data.push_back(rand() % max_data_range);
+  for (int i = 0; i < max_num_data_pnts-1; i++) {
+    test_data.push_back(rand() % max_data_range+2);
   }
 
   ASSERT_NO_THROW(uut_mppCalculator.calculate(test_data)) << "Set Size Limit validation broken.";
