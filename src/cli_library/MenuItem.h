@@ -12,7 +12,9 @@
 #include <vector>
 #include <memory>
 
-class IMenuItem {
+#include "MenuItemInput.h"
+
+class IMenuItem : public MenuItemInput {
 public:
 	virtual std::string getItemName(){return m_menuName;};
   virtual std::string getDescription()=0;
