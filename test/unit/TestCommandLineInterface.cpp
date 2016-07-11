@@ -9,6 +9,7 @@ TEST_F(TestCommandLineInterfaceBase,IntroductoryText)
 {
   testing::internal::CaptureStdout();
   CommandLineInterface uut_Cli;
+  uut_Cli.setInputBehavior(mockptr_input.get());
   std::string output = ::testing::internal::GetCapturedStdout();
   ASSERT_THAT(output,::testing::HasSubstr("C++"));
   ASSERT_THAT(output,::testing::HasSubstr("training"));
@@ -26,7 +27,6 @@ TEST_F(TestCommandLineInterface,DisplayMenu)
   ASSERT_THAT(output,::testing::HasSubstr("User Input:"));
 }
 
-
 TEST_F(TestCommandLineInterface,GetUserInput){
   /* Purpose of the getUserInput Method is to present User with a Prompt for options. Accept their response.
    * and return the response as a string. 
@@ -43,8 +43,13 @@ TEST_F(TestCommandLineInterface,GetUserInput){
 // Use Google Mock to Fake User Input. 
 
 //### Test Fixture Definition ###
-void TestCommandLineInterface::SetUp() {
+void TestCommandLineInterfaceBase::SetUp() {
+  mockptr_input=std::unique_ptr<InputBehavior>(new mockInputBehavior());
+}
 
+void TestCommandLineInterface::SetUp() {
+  TestCommandLineInterfaceBase::SetUp();
+  uut_Cli.setInputBehavior(mockptr_input.get());
 }
 
 void TestCommandLineInterface::TearDown() {

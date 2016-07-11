@@ -25,6 +25,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 # Includes
 include_directories(include)
 include_directories(src)
+include_directories(test)
 
 #[[ Add All Corresponding Source Directories and Targets based on Directory.
 #    All "subdirectories" should contain their own 'CMakeLists.txt' file.

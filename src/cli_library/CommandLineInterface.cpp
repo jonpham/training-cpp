@@ -13,12 +13,31 @@ CommandLineInterface::CommandLineInterface() :
   p_menu->loadMenuItems();
 }
 
-CommandLineInterface::CommandLineInterface(Menu* menu) : 
-  p_menu(menu)
+CommandLineInterface::CommandLineInterface(InputBehavior* input_behavior) :
+  up_menu(new Menu()),
+  p_inputBehavior(input_behavior)
+{
+  displayCliIntroduction();
+  p_menu=up_menu.get();
+  p_menu->displayUsageText();
+  p_menu->loadMenuItems();
+}
+
+CommandLineInterface::CommandLineInterface(Menu* menu,InputBehavior* input_behavior) : 
+  p_menu(menu),
+  p_inputBehavior(input_behavior)
 {
   displayCliIntroduction();
   p_menu->displayUsageText();
   p_menu->loadMenuItems();
+}
+
+void CommandLineInterface::setInputBehavior(InputBehavior* input_behavior){
+  p_inputBehavior=input_behavior;
+}
+
+void CommandLineInterface::setMenu(Menu* menu){
+  p_menu=menu;
 }
 
 void CommandLineInterface::displayTopMenu() {
@@ -28,6 +47,8 @@ void CommandLineInterface::displayTopMenu() {
   this->processMenuItem(user_input);
   return;
 }
+
+
 
 std::string CommandLineInterface::getUserInput() {
   return std::string("EMPTY");

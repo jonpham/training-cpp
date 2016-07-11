@@ -17,7 +17,7 @@
 
 class Menu {
 public:
-  // Menu(const &UserInput);
+  // Member Methods
   int loadMenuItems();
   void displayUsageText();
   void displayMenu();
@@ -25,6 +25,8 @@ public:
 protected:
   int registerMenuItem(std::shared_ptr<IMenuItem>&);
   std::vector<std::shared_ptr<IMenuItem>> m_menuList;
+private:
+  bool m_menuInitialized{false};
 };
 
 #endif //CTA_CLI_LIBRARY_CLI_MENU_H_

@@ -12,8 +12,9 @@ int main() {
 
   // Instantiate Top-Level Objects
   // std::unique_ptr<UserInput> cli_user_input(new UserInput(exitMethod));
+  std::unique_ptr<UserInput> cin_input(new UserInput(exitMethod));
   std::unique_ptr<Menu> cli_menu(new Menu());
-  std::unique_ptr<CommandLineInterface> cli(new CommandLineInterface(cli_menu.get()));
+  std::unique_ptr<CommandLineInterface> cli(new CommandLineInterface(cli_menu.get(),cin_input.get()));
 
   // Run Console Application
   while (programActive) {
