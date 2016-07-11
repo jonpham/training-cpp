@@ -29,10 +29,14 @@ protected:
   void processMenuItem(std::string user_input);
 private:
   // Pointer Storage
-  Menu* p_menu; // If Menu Is prexisting
+  Menu* p_menu{nullptr}; // If Menu Is prexisting
   std::unique_ptr<Menu> up_menu; // Otherwise
+  bool checkMenuPointer();
+  bool m_menuSet{false};
 
-  InputBehavior* p_inputBehavior; 
+  InputBehavior* p_inputBehavior{nullptr}; 
+  bool checkInputPointer();
+  bool m_inputSet{false};
 
 };
 

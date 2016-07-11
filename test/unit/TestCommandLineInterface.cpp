@@ -4,12 +4,14 @@
 
 #include "TestCommandLineInterface.h"
 
+using ::testing::Return;
+
 /* ####### TEST DEFINITION ####### */
 TEST_F(TestCommandLineInterfaceBase,IntroductoryText)
 {
   testing::internal::CaptureStdout();
   CommandLineInterface uut_Cli;
-  uut_Cli.setInputBehavior(mockptr_input.get());
+  uut_Cli.setInputBehavior(p_mock_input);
   std::string output = ::testing::internal::GetCapturedStdout();
   ASSERT_THAT(output,::testing::HasSubstr("C++"));
   ASSERT_THAT(output,::testing::HasSubstr("training"));
@@ -18,6 +20,9 @@ TEST_F(TestCommandLineInterfaceBase,IntroductoryText)
 TEST_F(TestCommandLineInterface,DisplayMenu)
 {
   // Setup
+  EXPECT_CALL(mock_input,displayInputRequest())
+    .WillOnce(Return("Please enter input here:"));
+    
   testing::internal::CaptureStdout();
   // Test Function
   uut_Cli.displayTopMenu();
@@ -32,24 +37,23 @@ TEST_F(TestCommandLineInterface,GetUserInput){
    * and return the response as a string. 
    */ 
   // Setup
-  testing::internal::CaptureStdout();
+
+  // Set Return Expectations:
+  EXPECT_CALL(mock_input,displayInputRequest())
+    .WillOnce(Return("Please enter input here:"));
+
   // Test Function
   std::string input = uut_Cli.getUserInput();
+
   // Validate Results
-  std::string output = ::testing::internal::GetCapturedStdout();
-  ASSERT_THAT(output,::testing::HasSubstr("Please enter"));
+  ASSERT_THAT(input,::testing::HasSubstr("Please enter"));
 }
 
 // Use Google Mock to Fake User Input. 
 
 //### Test Fixture Definition ###
-void TestCommandLineInterfaceBase::SetUp() {
-  mockptr_input=std::unique_ptr<InputBehavior>(new mockInputBehavior());
-}
-
 void TestCommandLineInterface::SetUp() {
-  TestCommandLineInterfaceBase::SetUp();
-  uut_Cli.setInputBehavior(mockptr_input.get());
+  uut_Cli.setInputBehavior(p_mock_input);
 }
 
 void TestCommandLineInterface::TearDown() {
