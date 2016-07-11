@@ -3,6 +3,7 @@
 //
 
 #include "CliMenu.h"
+#include "mpp_library/MppModule.h"
 
 
 int Menu::loadMenuItems() {
@@ -10,6 +11,9 @@ int Menu::loadMenuItems() {
   {
     std::shared_ptr<IMenuItem> menu_item1(new SayHello());
     this->registerMenuItem(menu_item1);
+
+    std::shared_ptr<IMenuItem> menu_item2(new MppModule());
+    this->registerMenuItem(menu_item2);
 
     // Ensure this Function will not run again.
     m_menuInitialized = true; 
