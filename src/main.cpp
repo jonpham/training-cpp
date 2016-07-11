@@ -19,7 +19,7 @@ int main() {
   // Run Console Application
   while (programActive) {
     cli->displayTopMenu();
-    std::string user_input = cli->getUserInput();
+    // std::string user_input = cli->getUserInput();
     // std::cout << "User Input: " << user_input << std::endl;
     // cli->processMenuItem(user_input);
   }

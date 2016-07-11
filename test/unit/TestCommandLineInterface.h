@@ -14,11 +14,12 @@
 class TestCommandLineInterfaceBase : public ::testing::Test {
 protected:
   // Test Dummies
-  std::unique_ptr<InputBehavior> mockptr_input;
+  mockInputBehavior mock_input;
+  InputBehavior* p_mock_input= &mock_input;
   // UUT Definitions
   // CommandLineInterface uut_Cli;
 
-  virtual void SetUp();
+  virtual void SetUp(){};
   virtual void TearDown(){};
 };
 

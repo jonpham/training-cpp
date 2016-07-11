@@ -9,8 +9,17 @@ CommandLineInterface::CommandLineInterface() :
 {
   displayCliIntroduction();
   p_menu=up_menu.get();
-  p_menu->displayUsageText();
-  p_menu->loadMenuItems();
+  // Check Menu Pointer Properly set
+  try {
+    this->checkMenuPointer();  
+  } catch (const std::runtime_error& runtime_error) {
+    std::cerr << "RunTime Error : " << runtime_error.what() << std::endl;
+  }
+  if (m_menuSet) {
+    p_menu->displayUsageText();
+    p_menu->loadMenuItems();
+  }
+
 }
 
 CommandLineInterface::CommandLineInterface(InputBehavior* input_behavior) :
@@ -19,8 +28,16 @@ CommandLineInterface::CommandLineInterface(InputBehavior* input_behavior) :
 {
   displayCliIntroduction();
   p_menu=up_menu.get();
-  p_menu->displayUsageText();
-  p_menu->loadMenuItems();
+  // Check Menu Pointer Properly set
+  try {
+    this->checkMenuPointer();  
+  } catch (const std::runtime_error& runtime_error) {
+    std::cerr << "RunTime Error : " << runtime_error.what() << std::endl;
+  }
+  if (m_menuSet) {
+    p_menu->displayUsageText();
+    p_menu->loadMenuItems();
+  }
 }
 
 CommandLineInterface::CommandLineInterface(Menu* menu,InputBehavior* input_behavior) : 
@@ -28,8 +45,16 @@ CommandLineInterface::CommandLineInterface(Menu* menu,InputBehavior* input_behav
   p_inputBehavior(input_behavior)
 {
   displayCliIntroduction();
-  p_menu->displayUsageText();
-  p_menu->loadMenuItems();
+  // Check Menu Pointer Properly set
+  try {
+    this->checkMenuPointer();  
+  } catch (const std::runtime_error& runtime_error) {
+    std::cerr << "RunTime Error : " << runtime_error.what() << std::endl;
+  }
+  if (m_menuSet) {
+    p_menu->displayUsageText();
+    p_menu->loadMenuItems();
+  }
 }
 
 void CommandLineInterface::setInputBehavior(InputBehavior* input_behavior){
@@ -51,7 +76,19 @@ void CommandLineInterface::displayTopMenu() {
 
 
 std::string CommandLineInterface::getUserInput() {
-  return std::string("EMPTY");
+  // Check Input Behavior Pointer Properly set
+  std::string user_input;
+  try {
+    this->checkInputPointer();  
+  } catch (const std::runtime_error& runtime_error) {
+    std::cerr << "RunTime Error : " << runtime_error.what() << std::endl;
+  }
+  if (m_inputSet) {
+    user_input = p_inputBehavior->displayInputRequest();
+  } else {
+    return "ERROR: INPUT_BEHAVIOR not SET";
+  }
+  return user_input;
 }
 
 void CommandLineInterface::processMenuItem(std::string user_input)
@@ -88,3 +125,24 @@ void CommandLineInterface::displayCliIntroduction(){
 }
 
 
+bool CommandLineInterface::checkMenuPointer() {
+  if (p_menu == nullptr) {
+    std::string error_msg = "No Menu Pointer Set/Found.";
+    throw std::runtime_error(error_msg);
+    return false;
+  } else {
+    m_menuSet=true;
+    return m_menuSet;
+  }
+}
+
+bool CommandLineInterface::checkInputPointer() {
+  if (p_inputBehavior == nullptr) {
+    std::string error_msg = "No Menu Pointer Set/Found.";
+    throw std::runtime_error(error_msg);
+    return false;
+  } else {
+    m_inputSet = true;
+    return m_inputSet;
+  }
+}
