@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <vector>
 #include <stdexcept>
+// For Timing Function Execution
+#include <chrono>
+using namespace std::chrono;
+
 
 #include "TestMaxPairedProduct.h"
 
@@ -50,6 +54,7 @@ TEST_F(TestMaxPairedProduct,highDuplicateNumbers)
 
 TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Limit){
   // Setup Test Data
+
   int max_num_data_pnts = 100000; // 10^5
   int max_data_range = 20;
   // int n = std::rand() % max_num_data_pnts + 2;
@@ -58,7 +63,13 @@ TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Limit){
     test_data.push_back(rand() % max_data_range+2);
   }
 
+  // Get Start Time
+  high_resolution_clock::time_point start_time = high_resolution_clock::now();
+
   ASSERT_NO_THROW(uut_mppCalculator.calculate(test_data)) << "Set Size Limit validation broken.";
+  high_resolution_clock::time_point finish_time = high_resolution_clock::now();
+  auto duration = duration_cast<seconds>( finish_time - start_time ).count();
+  ASSERT_LT(duration,10);
 }
 
 TEST_F(TestMaxPairedProduct,ceilingOnNSizeDataset_Overflow){
