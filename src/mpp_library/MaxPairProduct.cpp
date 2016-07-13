@@ -5,6 +5,11 @@
 
 int MaxPairProduct::calculate(const std::vector<int>& data_set)
 {
+  return this->calculateFast(data_set);
+}
+
+int MaxPairProduct::calculateSlow(const std::vector<int>& data_set)
+{
   int product_result = 0;
   if ( validMinMaxDataInput(data_set) && validDataSetSize(data_set) )
   {
@@ -25,6 +30,27 @@ int MaxPairProduct::calculate(const std::vector<int>& data_set)
   }
 
   return product_result;
+}
+
+int MaxPairProduct::calculateFast(const std::vector<int>& data_set)
+{
+  int set_size = data_set.size();
+
+  int max_index1 = -1;
+  for (int i = 0; i < set_size; ++i) {
+    if ((max_index1 == -1) || (data_set[i] > data_set[max_index1])){
+      max_index1 = i;
+    } else{}
+  }
+
+  int max_index2 = -1;
+  for (int j = 0; j < set_size; ++j){
+    if ((data_set[j] != data_set[max_index1]) && ((max_index2 == -1) || (data_set[j] > data_set[max_index2]))){
+      max_index2 = j;
+    } else {}
+  }
+
+  return ((data_set[max_index1]) * data_set[max_index2]);
 }
 
 bool MaxPairProduct::validMinMaxDataInput(const std::vector<int>& data_set)
