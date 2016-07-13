@@ -10,6 +10,8 @@
 class MaxPairProduct {
 public:
   int calculate(const std::vector<int>& data_set);
+  int calculateSlow(const std::vector<int>& data_set);
+  int calculateFast(const std::vector<int>& data_set);
 private: 
   bool validDataSetSize(const std::vector<int>& data_set);
   bool validMinMaxDataInput(const std::vector<int>& data_set);
