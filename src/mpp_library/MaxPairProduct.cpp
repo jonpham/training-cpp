@@ -48,7 +48,7 @@ int MaxPairProduct::calculateFast(const std::vector<int>& data_set)
 
     int max_index2 = -1;
     for (int j = 0; j < set_size; ++j){
-      if ((data_set[j] != data_set[max_index1]) && ((max_index2 == -1) || (data_set[j] > data_set[max_index2]))){
+      if ( (j != max_index1) && ( (max_index2 == -1) || (data_set[j] > data_set[max_index2]) ) ) {
         max_index2 = j;
       } else {}
     }
@@ -61,7 +61,6 @@ int MaxPairProduct::calculateFast(const std::vector<int>& data_set)
     throw std::out_of_range(error_msg);
     return -1;
   }
-
 }
 
 bool MaxPairProduct::validMinMaxDataInput(const std::vector<int>& data_set)
