@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### PROVISION file for 'phamjk-base-cpp' Development Machine ####
+#### PROVISION file for 'base-cpp' Development Machine ####
 
 # Update EPEL Repository
 yum -y install epel-release deltarpm;
