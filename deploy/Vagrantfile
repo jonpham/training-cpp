@@ -12,10 +12,10 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "bento/centos-7.2"
+  config.vm.box = "base/centos-7.2"
+  config.vm.box_url  = "https://helium.baeswlab.net/serve/env_tools/deployment/vagrant-boxes/_prebuilt_boxes/base-cpp-bento-centos7.box"
   config.vm.box_download_insecure = true
-  #config.vm.box_url = "INSERT UNIQUE URL IF NECESSARY"
-  config.vm.define "base_cpp" do |base_cpp|
+  config.vm.define "base_cpp_dev" do |base_cpp_dev|
   end
 
   # Disable automatic box update checking. If you disable this, then
@@ -67,7 +67,7 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell" do |s|
-    s.path = "provision.sh"
+    s.path = "provision-env.sh"
   end
 
   # Share an additional folder to the guest VM. The first argument is
