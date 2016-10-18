@@ -2,8 +2,8 @@
 This readme outlines the design requirements for this training project, meager as they may be.
 
 ## Purpose
-The purpose of this repository is to illustrate a sample Development Process for BAE P&S Software Product development
-using engineering productivity tools provided by the BAE P&S Software Functional Group:
+The purpose of this repository is to illustrate a sample Development Process for Software Product development
+using engineering productivity tools provided by the the Software Operations team.
   * **Confluence**; Documentation and Collaboration
   * **JIRA**; Issue / Effort Tracking
   * **Bitbucket Server**; Git Repository Management/Storage
